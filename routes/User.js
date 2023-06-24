@@ -1,20 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+// Define routes for users
+router.get('/', (req, res) => {
+  // Handle GET request for /users
+});
+
 router.post('/', (req, res) => {
-    // Retrieve the sign-up data from the request body
-    const { name, email, password } = req.body;
-  
-    // Perform any necessary validation or data processing
-    // ...
-  
-    // Create a new user in your database or storage
-    // ...
-  
-    // Send a response indicating successful sign-up
-    res.status(200).send('Sign-up successful!');
-  });
-  
+  // Handle POST request for /users
+});
 
-
-module.exports=router;
+// Export the router
+module.exports = router;

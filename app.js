@@ -1,19 +1,24 @@
 const express = require('express');
+const bcrypy = require('bcrypt');
 const path = require('path');
-
-//importing routes
-const userRoute = require('./routes/User');
-const loginRoute = require('./routes/login');
-
-app.use("/user",userRoute);
-app.use("/login",loginRoute);
+const bodyParser = require('body-parser');
 
 
 
+// Import route files
+const userRoutes = require('./routes/user.js');
+const loginRoutes = require('./routes/login.js');
 
 //initiating app
 const app = express();
 const port = 3000;
+
+
+// Use the route files
+app.use('/user', userRoutes);
+app.use('/login', loginRoutes);
+
+
 
 
 
@@ -21,7 +26,10 @@ const port = 3000;
 app.use(express.static(path.join(__dirname,'public')));
 
 
-
+// Define the login route
+app.get('/index', (req, res) => {
+  res.sendFile('index.html');
+});
 
   
   

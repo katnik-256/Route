@@ -1,19 +1,29 @@
-const express = rquire('express');
+const express = require('express');
 const router = express.Router();
 
 
-router.post('/', (req, res) => {
-    // Retrieve the sign-up data from the request body
-    const { name, email, password } = req.body;
-  
-    // Perform any necessary validation or data processing
-    // ...
-  
-    // Create a new user in your database or storage
-    // ...
-  
-    // Send a response indicating successful sign-up
-    res.status(200).send('You are Welcome');
-  });
 
+
+// Define routes for login
+router.get('/index', (req, res) => {
+  // Handle GET request for /login
+  res.sendFile(__dirname + '/public/index.html');
+});
+
+router.post('/index', (req, res) => {
+  // Handle POST request for /login
+  const username = req.body.username;
+  const password = req.body.password;
+// performing authentication/////////////////////////////////
+if (username === 'admin' && password === 'password') {
+  // Successful login
+  res.send('Login successful!');
+} else {
+  // Failed login
+  res.send('Invalid credentials. Please try again.');
+}
+
+});
+
+// Export the router
 module.exports = router;
